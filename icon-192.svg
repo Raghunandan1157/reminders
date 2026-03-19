@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6a1fcf"/>
+      <stop offset="100%" stop-color="#b44aff"/>
+    </linearGradient>
+    <linearGradient id="bell" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0d0f5"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="90" fill="url(#bg)"/>
+  <!-- Bell body -->
+  <path d="M96 36c-4.4 0-8 3.6-8 8v4.2C72.4 52.4 60 68.6 60 88v20l-10 14a4 4 0 0 0 3.3 6.2h85.4a4 4 0 0 0 3.3-6.2L132 108V88c0-19.4-12.4-35.6-28-39.8V44c0-4.4-3.6-8-8-8z" fill="url(#bell)"/>
+  <!-- Bell clapper -->
+  <circle cx="96" cy="140" r="10" fill="url(#bell)"/>
+  <!-- Highlight arc -->
+  <path d="M72 78c0-13.2 10.7-24 24-24" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
+</svg>

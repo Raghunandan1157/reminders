@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6a1fcf"/>
+      <stop offset="100%" stop-color="#b44aff"/>
+    </linearGradient>
+    <linearGradient id="bell" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0d0f5"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bg)"/>
+  <!-- Subtle inner ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+  <!-- Bell group with shadow -->
+  <g filter="url(#shadow)">
+    <!-- Bell body -->
+    <path d="M256 96c-11.8 0-21.3 9.5-21.3 21.3v11.2C196.5 140 160 183.2 160 234.7v53.3l-26.7 37.3a10.7 10.7 0 0 0 8.7 16.5h228a10.7 10.7 0 0 0 8.7-16.5L352 288V234.7c0-51.5-36.5-94.7-74.7-106.2v-11.2c0-11.8-9.5-21.3-21.3-21.3z" fill="url(#bell)"/>
+    <!-- Bell clapper -->
+    <circle cx="256" cy="373" r="26.7" fill="url(#bell)"/>
+  </g>
+  <!-- Highlight arc on bell -->
+  <path d="M192 208c0-35.3 28.7-64 64-64" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- Small notification dot -->
+  <circle cx="330" cy="150" r="22" fill="#ff4a6e"/>
+  <circle cx="330" cy="150" r="18" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.6"/>
+</svg>
