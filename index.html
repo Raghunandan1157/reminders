@@ -138,6 +138,7 @@ body::before{
 .badge-low{background:rgba(var(--success),0.15);color:rgb(var(--success))}
 .badge-medium{background:rgba(var(--warning),0.15);color:rgb(var(--warning))}
 .badge-high{background:rgba(var(--danger),0.15);color:rgb(var(--danger))}
+.badge-source{background:rgba(var(--accent),0.15);color:rgb(var(--accent));font-size:0.65rem;letter-spacing:0.5px;text-transform:uppercase}
 .card-desc{font-size:.88rem;color:rgb(var(--text-secondary));margin-bottom:10px;word-break:break-word;line-height:1.5}
 .card-meta{display:flex;align-items:center;gap:14px;font-size:.78rem;color:rgb(var(--text-secondary));flex-wrap:wrap}
 .card-meta svg{width:14px;height:14px;flex-shrink:0}
@@ -389,6 +390,210 @@ body::before{
   const STORAGE_KEY = 'reminders_app_data';
   const THEME_KEY = 'reminders_theme';
   let reminders = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+  /* ===== SEED DATA (from Google Calendar, Gmail, Apple sources) ===== */
+  if(reminders.length === 0) {
+    const seed = [
+      // === HIGH PRIORITY - Urgent & Actionable ===
+      {
+        id: crypto.randomUUID(),
+        title: "Railway Trial Expiring - Upgrade Plan",
+        desc: "Railway deployment trial expires ~Mar 25. Upgrade plan or migrate services to avoid application pause. Check billing at railway.app/account/billing",
+        date: "2026-03-25T10:00",
+        priority: "high",
+        completed: false,
+        createdAt: Date.now(),
+        source: "Gmail"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Submit EOD Report - Daily",
+        desc: "Send daily End-of-Day report from navachetana.raghu@gmail.com. Attach OverAll.xlsx with updates. Forward to kpbinish@gmail.com",
+        date: "2026-03-19T17:30",
+        priority: "high",
+        completed: false,
+        createdAt: Date.now() - 1000,
+        source: "Gmail"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Review Navachetana Agent Applications",
+        desc: "Multiple empanelment applications processed recently: NC-CON-2026-06595 (Suresh), NC-CON-2026-38746 (Raghunandan), NC-CON-2026-10974, NC-CON-2026-93431 (Karthik). Verify all are approved and credentials sent.",
+        date: "2026-03-20T11:00",
+        priority: "high",
+        completed: false,
+        createdAt: Date.now() - 2000,
+        source: "Gmail"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Follow Up on Interview Opportunity",
+        desc: "Skill Scout Consultancy sent interview 1st round details. Review the opportunity and decide whether to update profile. Email from alerts@jobs.shine.com",
+        date: "2026-03-21T10:00",
+        priority: "high",
+        completed: false,
+        createdAt: Date.now() - 3000,
+        source: "Gmail"
+      },
+
+      // === MEDIUM PRIORITY - Upcoming Holidays & Planning ===
+      {
+        id: crypto.randomUUID(),
+        title: "Ramzan Id - Public Holiday",
+        desc: "Public holiday (tentative date). Plan work schedule accordingly. Offices may be closed.",
+        date: "2026-03-21T09:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 4000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Rama Navami - Public Holiday",
+        desc: "Public holiday. Plan ahead - no work commitments on this day.",
+        date: "2026-03-26T09:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 5000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Mahavir Jayanti - Public Holiday",
+        desc: "Public holiday. Ensure all deliverables for the week are completed before this date.",
+        date: "2026-03-31T09:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 6000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Good Friday - Public Holiday",
+        desc: "Public holiday. Plan sprint work to accommodate the break.",
+        date: "2026-04-03T09:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 7000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Submit Weekly EOD Report Summary",
+        desc: "Compile and send weekly summary of all EOD reports. Include OverAll.xlsx attachments from the week.",
+        date: "2026-03-21T16:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 8000,
+        source: "Gmail"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Ambedkar Jayanti / Vaisakhi / Mesadi",
+        desc: "Multiple observances on Apr 14: Ambedkar Jayanti, Vaisakhi, and Mesadi. Public holiday.",
+        date: "2026-04-14T09:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 9000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Check Railway Deployment Status",
+        desc: "Monitor Railway app deployment after trial upgrade. Ensure all services are running. Check dashboard for any paused applications.",
+        date: "2026-03-26T14:00",
+        priority: "medium",
+        completed: false,
+        createdAt: Date.now() - 10000,
+        source: "Gmail"
+      },
+
+      // === LOW PRIORITY - Observances & Future Planning ===
+      {
+        id: crypto.randomUUID(),
+        title: "Ugadi & Gudi Padwa - Festival Day",
+        desc: "Happy New Year! Ugadi (Telugu/Kannada) and Gudi Padwa (Marathi) - New Year celebration. Enjoy the festivities!",
+        date: "2026-03-19T08:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 11000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Jamat Ul-Vida Observance",
+        desc: "Islamic observance day - Jamat Ul-Vida. Be mindful of colleagues observing.",
+        date: "2026-03-20T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 12000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Easter Sunday",
+        desc: "Easter Day observance. Send greetings to friends and colleagues who celebrate.",
+        date: "2026-04-05T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 13000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Bahag Bihu Observance",
+        desc: "Assamese New Year celebration - Bahag Bihu.",
+        date: "2026-04-15T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 14000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Buddha Purnima - Public Holiday",
+        desc: "Public holiday celebrating the birth of Gautama Buddha. Plan May deliverables accordingly.",
+        date: "2026-05-01T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 15000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Bakrid - Public Holiday (Tentative)",
+        desc: "Public holiday (tentative). Date may change. Keep an eye on official announcements.",
+        date: "2026-05-27T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 16000,
+        source: "Google Calendar"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Lemon AI - Product Hunt Support",
+        desc: "Lemon AI team requested Product Hunt support. Consider upvoting if you found the tool useful. Email from support@heylemon.ai",
+        date: "2026-03-20T12:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 17000,
+        source: "Gmail"
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Muharram/Ashura - Public Holiday (Tentative)",
+        desc: "Public holiday (tentative date - Jun 26). Date may change based on moon sighting.",
+        date: "2026-06-26T09:00",
+        priority: "low",
+        completed: false,
+        createdAt: Date.now() - 18000,
+        source: "Google Calendar"
+      }
+    ];
+    reminders = seed;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reminders));
+  }
+
   let currentFilter = 'all';
   let currentSort = 'date';
   let searchQuery = '';
@@ -526,6 +731,7 @@ body::before{
         <div class="card-top">
           <span class="card-title">${esc(r.title)}</span>
           <span class="badge badge-${r.priority}">${r.priority}</span>
+          ${r.source?`<span class="badge badge-source">${esc(r.source)}</span>`:''}
         </div>
         ${r.desc?`<div class="card-desc">${esc(r.desc)}</div>`:''}
         <div class="card-meta">
